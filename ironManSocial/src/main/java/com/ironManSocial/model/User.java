@@ -1,14 +1,22 @@
 
 package com.ironManSocial.model;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /*Basic User Class*/
 
+@Entity//(name="USER")
 public class User {
 
 	/* Instance Variable declaration */
-
+	
 	private String firstName;
 	private String lastName;
+	
+	@Id
 	private String userName;
 
 	private String userPassword;
@@ -18,7 +26,9 @@ public class User {
 	private String userEmail;
 
 	private String gender;
-
+	
+	private Date dob;
+	
 	// Default constructor
 	public User() {
 
@@ -85,6 +95,14 @@ public class User {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 	public String getGender() {
