@@ -33,7 +33,7 @@ public class User {
 	}
 	
 
-/*			Setters & Getters for instance variables		*/
+/*			Setters & Getters for instance variable		*/
 	
 	public String getFirstName() {
 		return firstName;
