@@ -1,7 +1,12 @@
+/*			Basic User Class								*/
+
 package com.ironManSocial.model;
 
 public class User {
 
+
+/*			Instance Variable declaration					*/
+	
 	private String firstName;
 	private String lastName;
 	private String userName;
@@ -13,8 +18,11 @@ public class User {
 	private String userEmail;
 	
 	private String Gender;
+
+
+/*			User Parameterized Constructor Creation			*/	
 	
-	private User(String firstName, String lastName, String userName, String userPassword, int userAge, String userEmail, String Gender){
+	User(String firstName, String lastName, String userName, String userPassword, int userAge, String userEmail, String Gender){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -23,6 +31,9 @@ public class User {
 		this.userEmail = userEmail;
 		this.Gender = Gender;
 	}
+	
+
+/*			Setters & Getters for instance variables		*/
 	
 	public String getFirstName() {
 		return firstName;
