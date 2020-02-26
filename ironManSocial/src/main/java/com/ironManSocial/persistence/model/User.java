@@ -1,5 +1,5 @@
 
-package com.ironManSocial.model;
+package com.ironManSocial.persistence.model;
 
 import java.util.Date;
 
