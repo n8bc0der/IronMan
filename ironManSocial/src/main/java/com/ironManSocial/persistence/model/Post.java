@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Id;
+
 public class Post {
 	
 	/* Instance Variable Declaration */
 	
+	@Id
 	private long postID;
 	
 	private String postSubject;			/* In future, remove if not needed */

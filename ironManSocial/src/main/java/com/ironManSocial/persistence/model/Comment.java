@@ -2,8 +2,11 @@ package com.ironManSocial.persistence.model;
 
 import java.util.Date;
 
+import javax.persistence.Id;
+
 public class Comment {
 
+	@Id
 	private long commentID;
 	
 	private String commentContent;
