@@ -1,6 +1,8 @@
 
 package com.ironManSocial.persistence.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -29,7 +31,11 @@ public class User {
 	
 	private Date dob;
 	
-	// Default constructor
+	private Collection<Post> posts = new ArrayList<Post>();
+	
+	private Collection<Comment> comments = new ArrayList<Comment>();
+
+	/* Default constructor */
 	public User() {
 
 	}
@@ -97,6 +103,14 @@ public class User {
 		this.userEmail = userEmail;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
 	public Date getDob() {
 		return dob;
 	}
@@ -104,12 +118,20 @@ public class User {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-
-	public String getGender() {
-		return gender;
+	
+	public Collection<Post> getPosts() {
+		return posts;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setPosts(Collection<Post> posts) {
+		this.posts = posts;
+	}
+
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
 	}
 }
