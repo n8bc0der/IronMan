@@ -5,18 +5,27 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Column;
 
+@Entity
+@Table(name="Post")
 public class Post {
 	
 	/* Instance Variable Declaration */
 	
 	@Id
+	@Column(name="POST_ID")
 	private long postID;
 	
+	@Column(name="POST_SUBJECT")
 	private String postSubject;			/* In future, remove if not needed */
 	
+	@Column(name="POST_DESCRIPTION")
 	private String postDescription;
 	
+	@Column(name="POST_TIME")
 	private Date postTime;
 	
 	private User user;

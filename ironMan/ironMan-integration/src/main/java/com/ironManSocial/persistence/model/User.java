@@ -1,4 +1,3 @@
-
 package com.ironManSocial.persistence.model;
 
 import java.util.ArrayList;
@@ -7,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Column;
 
 /*Basic User Class*/
 
@@ -15,20 +15,29 @@ public class User {
 
 	/* Instance Variable declaration */
 	
+	@Column(name="FIRST_NAME")
 	private String firstName;
+	
+	@Column(name="LAST_NAME")
 	private String lastName;
 	
 	@Id
+	@Column(name="USER_NAME")
 	private String userName;
 
+	@Column(name="USER_PASSWORD")
 	private String userPassword;
 
+	@Column(name="USER_AGE")
 	private int userAge;
 
+	@Column(name="USER_EMAIL")
 	private String userEmail;
 
+	@Column(name="GENDER")
 	private String gender;
 	
+	@Column(name="DOB")
 	private Date dob;
 	
 	private Collection<Post> posts = new ArrayList<Post>();
