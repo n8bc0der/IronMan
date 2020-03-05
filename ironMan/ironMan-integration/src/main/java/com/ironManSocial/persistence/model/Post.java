@@ -28,6 +28,12 @@ public class Post {
 	@Column(name="POST_TIME")
 	private Date postTime;
 	
+	@Column(name="USER_STAMP")
+	private String userStamp;
+	
+	@Column(name="TIME_STAMP")
+	private Date timeStamp;
+	
 	private User user;
 	
 	private Collection<Comment> postComment = new ArrayList<Comment>();
@@ -42,12 +48,14 @@ public class Post {
 	
 	/* Parameterized Constructor */
 	
-	public Post(long postID, String postSubject, String postDescription, Date postTime) {
+	public Post(long postID, String postSubject, String postDescription, Date postTime, String userStamp, Date timeStamp) {
 		
 		this.postID = postID;
 		this.postSubject = postSubject;
 		this.postDescription = postDescription;
 		this.postTime = postTime;
+		this.userStamp = userStamp;
+		this.timeStamp = timeStamp;
 	}
 	
 	/* Getter & Setter for Instance Variables */
@@ -56,7 +64,7 @@ public class Post {
 		return postID;
 	}
 
-	public void setPostID(int postID) {
+	public void setPostID(long postID) {
 		this.postID = postID;
 	}
 
@@ -83,6 +91,26 @@ public class Post {
 	public void setPostTime(Date postTime) {
 		this.postTime = postTime;
 	}
+
+	public String getUserStamp() {
+		return userStamp;
+	}
+
+
+	public void setUserStamp(String userStamp) {
+		this.userStamp = userStamp;
+	}
+
+
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
 
 	public Collection<Comment> getPostComment() {
 		return postComment;

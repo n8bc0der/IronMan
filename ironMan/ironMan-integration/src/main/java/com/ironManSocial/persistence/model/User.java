@@ -40,6 +40,12 @@ public class User {
 	@Column(name="DOB")
 	private Date dob;
 	
+	@Column(name="USER_STAMP")
+	private String userStamp;
+	
+	@Column(name="TIME_STAMP")
+	private Date timeStamp;
+	
 	private Collection<Post> posts = new ArrayList<Post>();
 	
 	private Collection<Comment> comments = new ArrayList<Comment>();
@@ -52,7 +58,7 @@ public class User {
 	/* User parameterized constructor Creation */
 
 	public User(String firstName, String lastName, String userName, String userPassword, int userAge, String userEmail,
-			String gender) {
+			String gender, Date dob, String userStamp, Date timeStamp) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -60,6 +66,9 @@ public class User {
 		this.userAge = userAge;
 		this.userEmail = userEmail;
 		this.gender = gender;
+		this.dob = dob;
+		this.userStamp = userStamp;
+		this.timeStamp = timeStamp;
 	}
 
 	/* Setters & Getters for instance variables */
@@ -128,6 +137,22 @@ public class User {
 		this.dob = dob;
 	}
 	
+	public String getUserStamp() {
+		return userStamp;
+	}
+
+	public void setUserStamp(String userStamp) {
+		this.userStamp = userStamp;
+	}
+
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
 	public Collection<Post> getPosts() {
 		return posts;
 	}

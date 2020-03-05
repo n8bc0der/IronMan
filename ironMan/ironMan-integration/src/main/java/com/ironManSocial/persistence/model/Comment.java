@@ -21,6 +21,12 @@ public class Comment {
  
   @Column(name="COMMENT_TIME")
   private Date commentTime;
+  
+  @Column(name="USER_STAMP")
+  private String userStamp;
+	
+  @Column(name="TIME_STAMP")
+  private Date timeStamp;
  
   private User user;
  
@@ -35,11 +41,13 @@ public class Comment {
  
   /* Parameterized Constructor */
  
-  public Comment(long commentID, String commentContent, Date commentTime) {
+  public Comment(long commentID, String commentContent, Date commentTime, String userStamp, Date timeStamp) {
     super();
     this.commentID = commentID;
     this.commentContent = commentContent;
     this.commentTime = commentTime;
+    this.userStamp = userStamp;
+    this.timeStamp = timeStamp;
   }
  
   public long getCommentID() {
@@ -65,4 +73,20 @@ public class Comment {
   public void setCommentTime(Date commentTime) {
     this.commentTime = commentTime;
   }
+
+public String getUserStamp() {
+	return userStamp;
+}
+
+public void setUserStamp(String userStamp) {
+	this.userStamp = userStamp;
+}
+
+public Date getTimeStamp() {
+	return timeStamp;
+}
+
+public void setTimeStamp(Date timeStamp) {
+	this.timeStamp = timeStamp;
+}
 }
