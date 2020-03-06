@@ -5,15 +5,26 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Column;
 
 /*Basic User Class*/
 
 @Entity//(name="USER")
+@Table(name="USER")
 public class User {
 
 	/* Instance Variable declaration */
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="USER_ID")
+	long userId;
 	
 	@Column(name="FIRST_NAME")
 	private String firstName;
@@ -38,6 +49,7 @@ public class User {
 	private String gender;
 	
 	@Column(name="DOB")
+	@Temporal(TemporalType.DATE)
 	private Date dob;
 	
 	@Column(name="USER_STAMP")
@@ -46,8 +58,10 @@ public class User {
 	@Column(name="TIME_STAMP")
 	private Date timeStamp;
 	
+	@OneToMany
 	private Collection<Post> posts = new ArrayList<Post>();
 	
+	@OneToMany
 	private Collection<Comment> comments = new ArrayList<Comment>();
 
 	/* Default constructor */
@@ -72,6 +86,14 @@ public class User {
 	}
 
 	/* Setters & Getters for instance variables */
+	
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -3,6 +3,7 @@ package com.ironManSocial.persistence.model;
 import java.util.Date;
  
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
@@ -27,7 +28,8 @@ public class Comment {
 	
   @Column(name="TIME_STAMP")
   private Date timeStamp;
- 
+  
+  @ManyToOne()
   private User user;
  
   private Post post;

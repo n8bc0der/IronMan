@@ -25,5 +25,7 @@
         
         <!--  entity class -->
         <mapping class="com.ironManSocial.persistence.model.User" />
+        <mapping class="com.ironManSocial.persistence.model.Post" />
+        <mapping class="com.ironManSocial.persistence.model.Comment" />
     </session-factory>
 </hibernate-configuration>
