@@ -10,7 +10,7 @@
         <property name="connection.password">root1234</property>
         
         <!-- JDBC connection pool settings ... using built-in test pool -->
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">100</property>
         
         <!-- Select our SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
@@ -21,7 +21,7 @@
         <property name="current_session_context_class">thread</property>
         
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         
         <!--  entity class -->
         <mapping class="com.ironManSocial.persistence.model.User" />

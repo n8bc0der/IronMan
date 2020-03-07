@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.Column;
 
 /*Basic User Class*/
@@ -22,7 +26,7 @@ public class User {
 
 	/* Instance Variable declaration */
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="USER_ID")
 	long userId;
 	
@@ -52,16 +56,19 @@ public class User {
 	@Temporal(TemporalType.DATE)
 	private Date dob;
 	
-	@Column(name="USER_STAMP")
-	private String userStamp;
+	@Column(name="USERSTAMP")
+	private String userstamp;
 	
-	@Column(name="TIME_STAMP")
-	private Date timeStamp;
+	@Column(name="TIMESTAMP")
+	private Date timestamp;
 	
-	@OneToMany
+	@OneToMany(mappedBy="user")
+	@Cascade(CascadeType.ALL)
 	private Collection<Post> posts = new ArrayList<Post>();
 	
-	@OneToMany
+	
+	@OneToMany(mappedBy="user")
+	@Cascade(CascadeType.ALL)
 	private Collection<Comment> comments = new ArrayList<Comment>();
 
 	/* Default constructor */
@@ -71,8 +78,11 @@ public class User {
 
 	/* User parameterized constructor Creation */
 
-	public User(String firstName, String lastName, String userName, String userPassword, int userAge, String userEmail,
-			String gender, Date dob, String userStamp, Date timeStamp) {
+	public User(String firstName, String lastName, String userName, String userPassword, int userAge,
+			String userEmail, String gender, Date dob, String userstamp, Date timestamp, Collection<Post> posts,
+			Collection<Comment> comments) {
+		
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -81,8 +91,10 @@ public class User {
 		this.userEmail = userEmail;
 		this.gender = gender;
 		this.dob = dob;
-		this.userStamp = userStamp;
-		this.timeStamp = timeStamp;
+		this.userstamp = userstamp;
+		this.timestamp = timestamp;
+		this.posts = posts;
+		this.comments = comments;
 	}
 
 	/* Setters & Getters for instance variables */
@@ -160,19 +172,19 @@ public class User {
 	}
 	
 	public String getUserStamp() {
-		return userStamp;
+		return userstamp;
 	}
 
-	public void setUserStamp(String userStamp) {
-		this.userStamp = userStamp;
+	public void setUserStamp(String userstamp) {
+		this.userstamp = userstamp;
 	}
 
 	public Date getTimeStamp() {
-		return timeStamp;
+		return timestamp;
 	}
 
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTimeStamp(Date timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public Collection<Post> getPosts() {

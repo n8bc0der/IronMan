@@ -1,12 +1,15 @@
 package com.ironManSocial.test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.ironManSocial.persistence.model.Comment;
+import com.ironManSocial.persistence.model.Post;
 import com.ironManSocial.persistence.model.User;
 
 public class AppTest {
@@ -29,7 +32,7 @@ public class AppTest {
 	 * 
 	 * }
 	 */
-
+	
 	public static void testEntityTables() {
 
 		User user = new User();
@@ -38,6 +41,40 @@ public class AppTest {
 		user.setUserEmail("milanalpha01@gmail.com");
 		user.setUserName("milantrehan");
 		user.setGender("Male");
+		user.setTimeStamp(new Date());
+		user.setDob(new GregorianCalendar(1992, Calendar.MARCH, 16).getTime());
+		
+		Post post = new Post();
+		post.setPostSubject("My First Post");
+		post.setUserStamp("mtrehan");
+		post.setPostDescription("This will be my first post for this app");
+		post.setTimeStamp(new Date());
+		post.setPostTime(new Date());
+		
+		Comment comment1 = new Comment();
+		comment1.setCommentTime(new Date());
+		comment1.setCommentContent("What a nice post!!");
+		comment1.setTimeStamp(new Date());
+		comment1.setUserStamp("mtrehan");
+		
+		comment1.setUser(user);
+		comment1.setPost(post);
+		
+		Comment comment2 = new Comment();
+		comment2.setCommentTime(new Date());
+		comment2.setCommentContent("What a great post!!");
+		comment2.setTimeStamp(new Date());
+		comment2.setUserStamp("mtrehan");
+		
+		comment2.setUser(user);
+		comment2.setPost(post);
+		
+		post.getPostComments().add(comment1);
+		post.getPostComments().add(comment2);
+		
+		user.getPosts().add(post);
+		user.getComments().add(comment1);
+		user.getComments().add(comment2);
 
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -62,6 +99,8 @@ public class AppTest {
 
 //		createDatabaseConnection();
 
-		testEntityTables();		
+		//uncomment to test:
+		
+	   //testEntityTables();		
 	}
 }

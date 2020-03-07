@@ -3,8 +3,11 @@ package com.ironManSocial.persistence.model;
 import java.util.Date;
  
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
@@ -14,6 +17,7 @@ import javax.persistence.Column;
 public class Comment {
  
   @Id
+  @GeneratedValue(strategy=GenerationType.SEQUENCE)
   @Column(name="COMMENT_ID")
   private long commentID;
  
@@ -23,15 +27,18 @@ public class Comment {
   @Column(name="COMMENT_TIME")
   private Date commentTime;
   
-  @Column(name="USER_STAMP")
-  private String userStamp;
+  @Column(name="USERSTAMP")
+  private String userstamp;
 	
-  @Column(name="TIME_STAMP")
-  private Date timeStamp;
+  @Column(name="TIMESTAMP")
+  private Date timestamp;
   
-  @ManyToOne()
+  @ManyToOne
+  @JoinColumn(name="USERNAME")
   private User user;
  
+  @ManyToOne
+  @JoinColumn(name="POST_ID")
   private Post post;
  
  
@@ -43,16 +50,18 @@ public class Comment {
  
   /* Parameterized Constructor */
  
-  public Comment(long commentID, String commentContent, Date commentTime, String userStamp, Date timeStamp) {
-    super();
-    this.commentID = commentID;
-    this.commentContent = commentContent;
-    this.commentTime = commentTime;
-    this.userStamp = userStamp;
-    this.timeStamp = timeStamp;
-  }
- 
-  public long getCommentID() {
+  public Comment( String commentContent, Date commentTime, String userstamp, Date timestamp, User user,
+		Post post) {
+	super();
+	this.commentContent = commentContent;
+	this.commentTime = commentTime;
+	this.userstamp = userstamp;
+	this.timestamp = timestamp;
+	this.user = user;
+	this.post = post;
+}
+
+public long getCommentID() {
     return commentID;
   }
  
@@ -77,18 +86,36 @@ public class Comment {
   }
 
 public String getUserStamp() {
-	return userStamp;
+	return userstamp;
 }
 
-public void setUserStamp(String userStamp) {
-	this.userStamp = userStamp;
+public void setUserStamp(String userstamp) {
+	this.userstamp = userstamp;
 }
 
 public Date getTimeStamp() {
-	return timeStamp;
+	return timestamp;
 }
 
-public void setTimeStamp(Date timeStamp) {
-	this.timeStamp = timeStamp;
+public void setTimeStamp(Date timestamp) {
+	this.timestamp = timestamp;
 }
+
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
+
+public Post getPost() {
+	return post;
+}
+
+public void setPost(Post post) {
+	this.post = post;
+}
+
+
 }

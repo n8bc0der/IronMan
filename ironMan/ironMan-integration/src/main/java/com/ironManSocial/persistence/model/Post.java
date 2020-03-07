@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="Post")
@@ -16,6 +22,8 @@ public class Post {
 	/* Instance Variable Declaration */
 	
 	@Id
+	@SequenceGenerator(initialValue= 1, name="post_sequence")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="post_sequence")
 	@Column(name="POST_ID")
 	private long postID;
 	
@@ -28,34 +36,37 @@ public class Post {
 	@Column(name="POST_TIME")
 	private Date postTime;
 	
-	@Column(name="USER_STAMP")
-	private String userStamp;
+	@Column(name="USERSTAMP")
+	private String userstamp;
 	
-	@Column(name="TIME_STAMP")
-	private Date timeStamp;
+	@Column(name="TIMESTAMP")
+	private Date timestamp;
 	
+	@ManyToOne
+	@JoinColumn(name="USERNAME")
 	private User user;
 	
-	private Collection<Comment> postComment = new ArrayList<Comment>();
-
+	@OneToMany(mappedBy="post")
+	private Collection<Comment> postComments  = new ArrayList<Comment>();
 	
 	/* Default Constructor */
 	
 	public Post() {
 		
 	}
-	
-	
 	/* Parameterized Constructor */
 	
-	public Post(long postID, String postSubject, String postDescription, Date postTime, String userStamp, Date timeStamp) {
-		
-		this.postID = postID;
+	
+	public Post( String postSubject, String postDescription, Date postTime, String userstamp,
+			Date timestamp, User user, Collection<Comment> postComments) {
+		super();
 		this.postSubject = postSubject;
 		this.postDescription = postDescription;
 		this.postTime = postTime;
-		this.userStamp = userStamp;
-		this.timeStamp = timeStamp;
+		this.userstamp = userstamp;
+		this.timestamp = timestamp;
+		this.user = user;
+		this.postComments = postComments;
 	}
 	
 	/* Getter & Setter for Instance Variables */
@@ -93,31 +104,63 @@ public class Post {
 	}
 
 	public String getUserStamp() {
-		return userStamp;
+		return userstamp;
 	}
 
 
 	public void setUserStamp(String userStamp) {
-		this.userStamp = userStamp;
+		this.userstamp = userStamp;
 	}
 
 
 	public Date getTimeStamp() {
-		return timeStamp;
+		return timestamp;
 	}
 
 
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTimeStamp(Date timestamp) {
+		this.timestamp = timestamp;
 	}
 
 
-	public Collection<Comment> getPostComment() {
-		return postComment;
+	public Collection<Comment> getPostComments() {
+		return postComments;
 	}
 
-	public void setPostComment(Collection<Comment> postComment) {
-		this.postComment = postComment;
+	public void setPostComments(Collection<Comment> postComments) {
+		this.postComments = postComments;
 	}
+
+	public String getUserstamp() {
+		return userstamp;
+	}
+
+
+	public void setUserstamp(String userstamp) {
+		this.userstamp = userstamp;
+	}
+
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
 
 }
