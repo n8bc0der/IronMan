@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,8 +26,8 @@ import javax.persistence.Column;
 public class User {
 
 	/* Instance Variable declaration */
-	
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(initialValue= 1, name="user_sequence")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
 	@Column(name="USER_ID")
 	long userId;
 	
@@ -37,7 +38,7 @@ public class User {
 	private String lastName;
 	
 	@Id
-	@Column(name="USER_NAME")
+	@Column(name="USERNAME")
 	private String userName;
 
 	@Column(name="USER_PASSWORD")

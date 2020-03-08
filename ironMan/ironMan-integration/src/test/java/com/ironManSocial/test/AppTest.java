@@ -34,8 +34,9 @@ public class AppTest {
 	 */
 	
 	public static void testEntityTables() {
-
-		User user = new User();
+		//User user = new User(firstName, lastName, userName, userPassword, userAge, userEmail, gender, dob, userstamp, timestamp, posts, comments);
+	
+		User user = new User();	
 		user.setFirstName("Milan");
 		user.setLastName("Trehan");
 		user.setUserEmail("milanalpha01@gmail.com");
@@ -50,6 +51,7 @@ public class AppTest {
 		post.setPostDescription("This will be my first post for this app");
 		post.setTimeStamp(new Date());
 		post.setPostTime(new Date());
+		post.setUser(user);
 		
 		Comment comment1 = new Comment();
 		comment1.setCommentTime(new Date());
@@ -91,6 +93,14 @@ public class AppTest {
 		session.beginTransaction();
 		user = (User) session.get(User.class, "milantrehan");
 		System.out.println("Name of the person is " + user.getFirstName() + " " + user.getLastName());
+		
+		Comment fetchComment = (Comment)session.get(Comment.class, 2L);
+		System.out.println("Comment content is:" + fetchComment.getCommentContent());
+		session.getTransaction().commit();
+		session.close();
+		
+		//TODO: Create a new user named Ankit with two posts - each post should have at least one comment
+		
 
 	}
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,8 @@ import javax.persistence.Column;
 public class Comment {
  
   @Id
-  @GeneratedValue(strategy=GenerationType.SEQUENCE)
+  @SequenceGenerator(initialValue= 1, name="comment_sequence")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_sequence")
   @Column(name="COMMENT_ID")
   private long commentID;
  
