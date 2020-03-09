@@ -31,9 +31,15 @@ public class Comment {
   
   @Column(name="USERSTAMP")
   private String userstamp;
-	
+  
+  @Column(name="CREATED_DATE")
+  private Date createdDate;
+  
   @Column(name="TIMESTAMP")
   private Date timestamp;
+  
+  @Column(name="LAST_MODIFIED_TIMESTAMP")
+  private Date lastModifiedTimestamp;
   
   @ManyToOne
   @JoinColumn(name="USERNAME")
@@ -61,63 +67,86 @@ public class Comment {
 	this.timestamp = timestamp;
 	this.user = user;
 	this.post = post;
-}
-
-public long getCommentID() {
-    return commentID;
-  }
- 
-  public void setCommentID(long commentID) {
-    this.commentID = commentID;
-  }
- 
-  public String getCommentContent() {
-    return commentContent;
-  }
- 
-  public void setCommentContent(String commentContent) {
-    this.commentContent = commentContent;
-  }
- 
-  public Date getCommentTime() {
-    return commentTime;
-  }
- 
-  public void setCommentTime(Date commentTime) {
-    this.commentTime = commentTime;
   }
 
-public String getUserStamp() {
-	return userstamp;
-}
+	public long getCommentID() {
+		return commentID;
+	}
 
-public void setUserStamp(String userstamp) {
-	this.userstamp = userstamp;
-}
+	public void setCommentID(long commentID) {
+		this.commentID = commentID;
+	}
 
-public Date getTimeStamp() {
-	return timestamp;
-}
+	public String getCommentContent() {
+		return commentContent;
+	}
 
-public void setTimeStamp(Date timestamp) {
-	this.timestamp = timestamp;
-}
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
+	}
 
-public User getUser() {
-	return user;
-}
+	public Date getCommentTime() {
+		return commentTime;
+	}
 
-public void setUser(User user) {
-	this.user = user;
-}
+	public void setCommentTime(Date commentTime) {
+		this.commentTime = commentTime;
+	}
 
-public Post getPost() {
-	return post;
-}
+	public Date getTimeStamp() {
+		return timestamp;
+	}
 
-public void setPost(Post post) {
-	this.post = post;
-}
+	public void setTimeStamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
 
+	public String getUserstamp() {
+		return userstamp;
+	}
+
+	public void setUserstamp(String userstamp) {
+		this.userstamp = userstamp;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public Date getLastModifiedTimestamp() {
+		return lastModifiedTimestamp;
+	}
+
+	public void setLastModifiedTimestamp(Date lastModifiedTimestamp) {
+		this.lastModifiedTimestamp = lastModifiedTimestamp;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
 
 }

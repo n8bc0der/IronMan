@@ -21,7 +21,7 @@ import javax.persistence.Column;
 
 /*Basic User Class*/
 
-@Entity//(name="USER")
+@Entity
 @Table(name="USER")
 public class User {
 
@@ -59,9 +59,15 @@ public class User {
 	
 	@Column(name="USERSTAMP")
 	private String userstamp;
-	
-	@Column(name="TIMESTAMP")
+
+	@Column(name = "CREATED_DATE")
+	private Date createdDate;
+
+	@Column(name = "TIMESTAMP")
 	private Date timestamp;
+
+	@Column(name = "LAST_MODIFIED_TIMESTAMP")
+	private Date lastModifiedTimestamp;
 	
 	@OneToMany(mappedBy="user")
 	@Cascade(CascadeType.ALL)
@@ -172,16 +178,36 @@ public class User {
 		this.dob = dob;
 	}
 	
-	public String getUserStamp() {
+	public String getUserstamp() {
 		return userstamp;
 	}
 
-	public void setUserStamp(String userstamp) {
+	public void setUserstamp(String userstamp) {
 		this.userstamp = userstamp;
 	}
 
-	public Date getTimeStamp() {
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getTimestamp() {
 		return timestamp;
+	}
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public Date getLastModifiedTimestamp() {
+		return lastModifiedTimestamp;
+	}
+
+	public void setLastModifiedTimestamp(Date lastModifiedTimestamp) {
+		this.lastModifiedTimestamp = lastModifiedTimestamp;
 	}
 
 	public void setTimeStamp(Date timestamp) {
@@ -203,4 +229,6 @@ public class User {
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
+	
+	
 }

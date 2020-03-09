@@ -32,7 +32,15 @@ public class AppTest {
 	 * 
 	 * }
 	 */
+	public static SessionFactory sessionFactory;
 	
+	static
+	{
+		sessionFactory = new Configuration().configure().buildSessionFactory();
+		
+	}
+	
+	//populates tables with data of one user with realistic data
 	public static void testEntityTables() {
 		//User user = new User(firstName, lastName, userName, userPassword, userAge, userEmail, gender, dob, userstamp, timestamp, posts, comments);
 	
@@ -44,6 +52,9 @@ public class AppTest {
 		user.setGender("Male");
 		user.setTimeStamp(new Date());
 		user.setDob(new GregorianCalendar(1992, Calendar.MARCH, 16).getTime());
+		user.setLastModifiedTimestamp(new Date());
+		user.setCreatedDate(new GregorianCalendar(1992, Calendar.JANUARY, 10).getTime());
+		user.setUserstamp("mtrehan");
 		
 		Post post = new Post();
 		post.setPostSubject("My First Post");
@@ -51,13 +62,17 @@ public class AppTest {
 		post.setPostDescription("This will be my first post for this app");
 		post.setTimeStamp(new Date());
 		post.setPostTime(new Date());
+		post.setCreatedDate(new GregorianCalendar(1992, Calendar.MARCH, 10).getTime());
+		post.setLastModifiedTimestamp(new Date());
 		post.setUser(user);
 		
 		Comment comment1 = new Comment();
 		comment1.setCommentTime(new Date());
 		comment1.setCommentContent("What a nice post!!");
-		comment1.setTimeStamp(new Date());
-		comment1.setUserStamp("mtrehan");
+		comment1.setTimestamp(new Date());
+		comment1.setUserstamp("mtrehan");
+		comment1.setCreatedDate(new GregorianCalendar(1992, Calendar.FEBRUARY, 11).getTime());
+		comment1.setLastModifiedTimestamp(new Date());
 		
 		comment1.setUser(user);
 		comment1.setPost(post);
@@ -65,8 +80,10 @@ public class AppTest {
 		Comment comment2 = new Comment();
 		comment2.setCommentTime(new Date());
 		comment2.setCommentContent("What a great post!!");
-		comment2.setTimeStamp(new Date());
-		comment2.setUserStamp("mtrehan");
+		comment2.setTimestamp(new Date());
+		comment2.setUserstamp("mtrehan");
+		comment2.setCreatedDate(new Date());
+		comment2.setLastModifiedTimestamp(new Date());
 		
 		comment2.setUser(user);
 		comment2.setPost(post);
@@ -78,7 +95,6 @@ public class AppTest {
 		user.getComments().add(comment1);
 		user.getComments().add(comment2);
 
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user);
@@ -103,14 +119,89 @@ public class AppTest {
 		
 
 	}
-
+	
+	
+	//#17: populates tables with dummy data
+	public static void fillTables() {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		//adding 10 dummy users with posts and comments
+		for(int i=1; i<=10; i++) {
+			
+			User user = new User();	
+			user.setFirstName("User");
+			user.setLastName("" + i);
+			user.setUserEmail("user_"+i+ "@gmail.com");
+			user.setUserName("username"+i);
+			user.setGender("Male");
+			user.setTimeStamp(new Date());
+			user.setCreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, i).getTime());
+			user.setLastModifiedTimestamp(new Date());
+			user.setDob(new GregorianCalendar(1992, Calendar.MARCH, i).getTime());
+			user.setUserstamp("user"+i);
+			
+			Post post = new Post();
+			post.setPostSubject("My"+i+"th"+ "Post");
+			post.setUserStamp("user"+i);
+			post.setPostDescription("This will be my test post for this app");
+			post.setTimeStamp(new Date());
+			post.setPostTime(new Date());
+			post.setCreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, i).getTime());
+			post.setLastModifiedTimestamp(new Date());
+			post.setUser(user);
+			
+			Comment comment1 = new Comment();
+			comment1.setCommentTime(new Date());
+			comment1.setCommentContent("@user"+i+"What a nice post!!");
+			comment1.setTimestamp(new Date());
+			comment1.setCreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, i).getTime());
+			comment1.setLastModifiedTimestamp(new Date());
+			comment1.setUserstamp("user"+i);
+			
+			comment1.setUser(user);
+			comment1.setPost(post);
+			
+			Comment comment2 = new Comment();
+			comment2.setCommentTime(new Date());
+			comment2.setCommentContent("@user"+i+ "What a great post!!");
+			comment2.setTimestamp(new Date());
+			comment2.setUserstamp("user"+i);
+			comment2.setCreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, i).getTime());
+			comment2.setLastModifiedTimestamp(new Date());
+			
+			
+			comment2.setUser(user);
+			comment2.setPost(post);
+			
+			post.getPostComments().add(comment1);
+			post.getPostComments().add(comment2);
+			
+			user.getPosts().add(post);
+			user.getComments().add(comment1);
+			user.getComments().add(comment2);
+			
+			session.save(user);
+		}
+		
+		session.getTransaction().commit();
+		session.close();
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-//		createDatabaseConnection();
+		
+		//
+		//	createDatabaseConnection();
 
 		//uncomment to test:
 		
-	   //testEntityTables();		
+		//adds data to tables with a user's info and comments 
+		//testEntityTables();
+		
+		//TODO: for ANKIT:  add code to testEntityTables() method add one more user with comments and post - see method's body for description
+		
+		//#17: populate tables with dummy data
+		//fillTables();
 	}
 }

@@ -39,8 +39,14 @@ public class Post {
 	@Column(name="USERSTAMP")
 	private String userstamp;
 	
-	@Column(name="TIMESTAMP")
+	@Column(name = "CREATED_DATE")
+	private Date createdDate;
+
+	@Column(name = "TIMESTAMP")
 	private Date timestamp;
+
+	@Column(name = "LAST_MODIFIED_TIMESTAMP")
+	private Date lastModifiedTimestamp;
 	
 	@ManyToOne
 	@JoinColumn(name="USERNAME")
@@ -141,6 +147,16 @@ public class Post {
 	}
 
 
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+
 	public Date getTimestamp() {
 		return timestamp;
 	}
@@ -148,6 +164,16 @@ public class Post {
 
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
+	}
+
+
+	public Date getLastModifiedTimestamp() {
+		return lastModifiedTimestamp;
+	}
+
+
+	public void setLastModifiedTimestamp(Date lastModifiedTimestamp) {
+		this.lastModifiedTimestamp = lastModifiedTimestamp;
 	}
 
 
