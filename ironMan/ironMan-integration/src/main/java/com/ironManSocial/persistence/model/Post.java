@@ -77,6 +77,15 @@ public class Post {
 	
 	/* Getter & Setter for Instance Variables */
 	
+	@Override
+	public String toString() {
+		return "Post [postID=" + postID + ", postSubject=" + postSubject + ", postDescription=" + postDescription
+				+ ", postTime=" + postTime + ", userstamp=" + userstamp + ", createdDate=" + createdDate
+				+ ", timestamp=" + timestamp + ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", user=" + user
+				+ ", postComments=" + postComments + "]";
+	}
+
+
 	public long getPostID() {
 		return postID;
 	}

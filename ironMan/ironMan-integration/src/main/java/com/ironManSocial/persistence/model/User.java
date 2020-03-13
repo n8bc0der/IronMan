@@ -26,9 +26,10 @@ import javax.persistence.Column;
 public class User {
 
 	/* Instance Variable declaration */
-	@SequenceGenerator(initialValue= 1, name="user_sequence")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-	@Column(name="USER_ID")
+	//@SequenceGenerator(initialValue= 1, name="user_sequence")
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+	
+	@Column(name="USER_ID",columnDefinition="serial", insertable = false, updatable = false, unique = true, nullable = false)
 	long userId;
 	
 	@Column(name="FIRST_NAME")
@@ -106,6 +107,15 @@ public class User {
 
 	/* Setters & Getters for instance variables */
 	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+				+ userName + ", userPassword=" + userPassword + ", userAge=" + userAge + ", userEmail=" + userEmail
+				+ ", gender=" + gender + ", dob=" + dob + ", userstamp=" + userstamp + ", createdDate=" + createdDate
+				+ ", timestamp=" + timestamp + ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", posts=" + posts
+				+ ", comments=" + comments + "]";
+	}
+
 	public long getUserId() {
 		return userId;
 	}

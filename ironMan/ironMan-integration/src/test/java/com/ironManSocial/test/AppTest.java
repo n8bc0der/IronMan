@@ -3,10 +3,12 @@ package com.ironManSocial.test;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.ironManSocial.persistence.model.Comment;
 import com.ironManSocial.persistence.model.Post;
@@ -145,7 +147,7 @@ public class AppTest {
 			Post post = new Post();
 			post.setPostSubject("My"+i+"th"+ "Post");
 			post.setUserStamp("user"+i);
-			post.setPostDescription("This will be my test post for this app");
+			post.setPostDescription("This will be my " + i +" test post for this app");
 			post.setTimeStamp(new Date());
 			post.setPostTime(new Date());
 			post.setCreatedDate(new GregorianCalendar(2020, Calendar.JANUARY, i).getTime());
@@ -188,6 +190,55 @@ public class AppTest {
 		session.getTransaction().commit();
 		session.close();
 	}
+	
+	public static void getDetails(long startingIndex, long numberOfRecords) {
+			
+				Session session = sessionFactory.getCurrentSession();
+				
+				session.beginTransaction();
+				
+				session.createQuery("from User where user_id = :startingIndex");
+				
+				try{
+					
+				  //Using placeholder in the query for post class
+					
+					String sql = "select postDescription from Post p" + 
+									" where p.postID>:id and p.postID<:id1";
+					
+					Query query = session.createQuery(sql);
+					
+					query.setParameter("id", startingIndex);
+					
+					query.setParameter("id1", numberOfRecords + startingIndex);
+
+					List<Post> user1 = query.getResultList();
+					
+					System.out.println("Post is : " + user1);
+					
+					
+				  //Fetching Username from Starting Index : startingIdex to Number Of Records : numberOfRecords
+					
+					String userQuery = "Select userName from User";
+					
+					Query query1 = session.createQuery(userQuery).setFirstResult((int) startingIndex).setMaxResults((int) numberOfRecords);
+					
+					List<User> user2 = query1.getResultList();
+					
+					System.out.println("User details : " + user2);
+			
+				}catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				finally {
+					session.close();
+				}
+		
+
+	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -202,6 +253,8 @@ public class AppTest {
 		//TODO: for ANKIT:  add code to testEntityTables() method add one more user with comments and post - see method's body for description
 		
 		//#17: populate tables with dummy data
-		//fillTables();
+		fillTables();
+		
+		getDetails(3L, 4L);
 	}
 }
