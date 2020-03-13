@@ -69,6 +69,13 @@ public class Comment {
 	this.post = post;
   }
 
+	@Override
+public String toString() {
+	return "Comment [commentID=" + commentID + ", commentContent=" + commentContent + ", commentTime=" + commentTime
+			+ ", userstamp=" + userstamp + ", createdDate=" + createdDate + ", timestamp=" + timestamp
+			+ ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", user=" + user + ", post=" + post + "]";
+}
+
 	public long getCommentID() {
 		return commentID;
 	}

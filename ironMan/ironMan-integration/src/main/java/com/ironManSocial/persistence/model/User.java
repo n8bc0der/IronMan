@@ -22,43 +22,44 @@ import javax.persistence.Column;
 /*Basic User Class*/
 
 @Entity
-@Table(name="USER")
+@Table(name = "USER")
 public class User {
 
 	/* Instance Variable declaration */
-	//@SequenceGenerator(initialValue= 1, name="user_sequence")
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-	
-	@Column(name="USER_ID",columnDefinition="serial", insertable = false, updatable = false, unique = true, nullable = false)
+	// @SequenceGenerator(initialValue= 1, name="user_sequence")
+	// @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
+	// "user_sequence")
+
+	@Column(name = "USER_ID", columnDefinition = "serial", insertable = false, updatable = false, unique = true, nullable = false)
 	long userId;
-	
-	@Column(name="FIRST_NAME")
+
+	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
-	@Column(name="LAST_NAME")
+
+	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Id
-	@Column(name="USERNAME")
+	@Column(name = "USERNAME")
 	private String userName;
 
-	@Column(name="USER_PASSWORD")
+	@Column(name = "USER_PASSWORD")
 	private String userPassword;
 
-	@Column(name="USER_AGE")
+	@Column(name = "USER_AGE")
 	private int userAge;
 
-	@Column(name="USER_EMAIL")
+	@Column(name = "USER_EMAIL")
 	private String userEmail;
 
-	@Column(name="GENDER")
+	@Column(name = "GENDER")
 	private String gender;
-	
-	@Column(name="DOB")
+
+	@Column(name = "DOB")
 	@Temporal(TemporalType.DATE)
 	private Date dob;
-	
-	@Column(name="USERSTAMP")
+
+	@Column(name = "USERSTAMP")
 	private String userstamp;
 
 	@Column(name = "CREATED_DATE")
@@ -69,13 +70,12 @@ public class User {
 
 	@Column(name = "LAST_MODIFIED_TIMESTAMP")
 	private Date lastModifiedTimestamp;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	@Cascade(CascadeType.ALL)
 	private Collection<Post> posts = new ArrayList<Post>();
-	
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	@Cascade(CascadeType.ALL)
 	private Collection<Comment> comments = new ArrayList<Comment>();
 
@@ -86,10 +86,10 @@ public class User {
 
 	/* User parameterized constructor Creation */
 
-	public User(String firstName, String lastName, String userName, String userPassword, int userAge,
-			String userEmail, String gender, Date dob, String userstamp, Date timestamp, Collection<Post> posts,
+	public User(String firstName, String lastName, String userName, String userPassword, int userAge, String userEmail,
+			String gender, Date dob, String userstamp, Date timestamp, Collection<Post> posts,
 			Collection<Comment> comments) {
-		
+
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -106,7 +106,7 @@ public class User {
 	}
 
 	/* Setters & Getters for instance variables */
-	
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
@@ -179,7 +179,7 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
+
 	public Date getDob() {
 		return dob;
 	}
@@ -187,7 +187,7 @@ public class User {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	
+
 	public String getUserstamp() {
 		return userstamp;
 	}
@@ -239,6 +239,5 @@ public class User {
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
-	
-	
+
 }
