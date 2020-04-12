@@ -24,3 +24,4 @@ DB: MySql
     - packaging of all except Views ( dynamic web module) is of type JAR
 6. Tomcat version - 8
 
+7. Spring version 5.2.0
