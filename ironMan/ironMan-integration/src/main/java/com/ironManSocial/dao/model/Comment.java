@@ -1,4 +1,4 @@
-package com.ironManSocial.persistence.model;
+package com.ironManSocial.dao.model;
  
 import java.util.Date;
  

@@ -10,9 +10,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-import com.ironManSocial.persistence.model.Comment;
-import com.ironManSocial.persistence.model.Post;
-import com.ironManSocial.persistence.model.User;
+import com.ironManSocial.dao.model.Comment;
+import com.ironManSocial.dao.model.Post;
+import com.ironManSocial.dao.model.User;
 
 public class AppTest {
 
