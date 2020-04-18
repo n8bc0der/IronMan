@@ -1,5 +1,6 @@
 package com.ironManSocial.service;
 
-public class UserProfileService {
-
+public interface UserProfileService {
+	
+	public int save();
 }

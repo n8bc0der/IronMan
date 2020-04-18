@@ -1,5 +1,5 @@
 package com.ironManSocial.dao;
 
-public class UserDao {
+public interface UserDao {
 
 }
