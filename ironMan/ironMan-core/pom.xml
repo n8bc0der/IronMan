@@ -14,7 +14,8 @@
 			<groupId>com.ironManSocial</groupId>
 			<artifactId>ironMan-integration</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>		
+		</dependency>
+		
 	</dependencies>
 
 

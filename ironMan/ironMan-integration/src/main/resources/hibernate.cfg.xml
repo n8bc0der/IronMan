@@ -24,8 +24,8 @@
         <property name="hbm2ddl.auto">create</property>
         
         <!--  entity class -->
-        <mapping class="com.ironManSocial.persistence.model.User" />
-        <mapping class="com.ironManSocial.persistence.model.Post" />
-        <mapping class="com.ironManSocial.persistence.model.Comment" />
+        <mapping class="com.ironManSocial.dao.model.User" />
+        <mapping class="com.ironManSocial.dao.model.Post" />
+        <mapping class="com.ironManSocial.dao.model.Comment" />
     </session-factory>
 </hibernate-configuration>

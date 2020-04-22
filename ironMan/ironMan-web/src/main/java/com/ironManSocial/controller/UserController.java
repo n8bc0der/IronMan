@@ -16,7 +16,7 @@ public class UserController {
 	@RequestMapping("/registrationPage")
 	public ModelAndView showRegistrationPage() {
 		
-		
+		System.out.println("OMG!!! I AM WORKING");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("userRegistration");
 		
