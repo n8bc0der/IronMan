@@ -242,7 +242,7 @@ public class AppTest {
 
 		// uncomment to test:
 
-		// adds data to tables with a user's info and comments
+		// adds data to tables with a user's info and comments ##
 		// testEntityTables();
 
 		// TODO: for ANKIT: add code to testEntityTables() method add one more user with

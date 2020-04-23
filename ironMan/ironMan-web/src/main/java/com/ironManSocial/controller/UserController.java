@@ -13,15 +13,18 @@ public class UserController {
 	@Autowired
 	private UserProfileService userProfileService;
 	
-	@RequestMapping("/registrationPage")
+	
+	@RequestMapping("/registrationPage*")
 	public ModelAndView showRegistrationPage() {
 		
 		System.out.println("OMG!!! I AM WORKING");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("userRegistration");
-		
+		userProfileService.save();
 		return modelAndView;	
 	}
+	
+	@RequestMapping(value="registerUser.html")
 	
 	
 
