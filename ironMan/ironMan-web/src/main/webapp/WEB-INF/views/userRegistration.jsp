@@ -8,6 +8,6 @@
 </head>
 <body>
 <h3>Let's get started</h3>
-<img src="/resources/images/ironManWallpaper.jpg" />
+<img src="resources/images/ironManWallpaper.jpg" />
 </body>
 </html>
