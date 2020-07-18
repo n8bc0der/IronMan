@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.Column;
 
@@ -70,13 +73,15 @@ public class User {
 
 	@Column(name = "LAST_MODIFIED_TIMESTAMP")
 	private Date lastModifiedTimestamp;
-
-	@OneToMany(mappedBy = "user")
+ 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")  // adding fetch type eager to fix  org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role when retrieving a user
+	@Fetch(value = FetchMode.SUBSELECT)
 	@Cascade(CascadeType.ALL)
 	private Collection<Post> posts = new ArrayList<Post>();
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")  // adding fetch type eager to fix  org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role when retrieving a user
 	@Cascade(CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Comment> comments = new ArrayList<Comment>();
 
 	/* Default constructor */
@@ -107,14 +112,6 @@ public class User {
 
 	/* Setters & Getters for instance variables */
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
-				+ userName + ", userPassword=" + userPassword + ", userAge=" + userAge + ", userEmail=" + userEmail
-				+ ", gender=" + gender + ", dob=" + dob + ", userstamp=" + userstamp + ", createdDate=" + createdDate
-				+ ", timestamp=" + timestamp + ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", posts=" + posts
-				+ ", comments=" + comments + "]";
-	}
 
 	public long getUserId() {
 		return userId;
@@ -238,6 +235,16 @@ public class User {
 
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+				+ userName + ", userPassword=" + userPassword + ", userAge=" + userAge + ", userEmail=" + userEmail
+				+ ", gender=" + gender + ", dob=" + dob + ", userstamp=" + userstamp + ", createdDate=" + createdDate
+				+ ", timestamp=" + timestamp + ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", posts=" + posts
+				+ ", comments=" + comments + "]";
 	}
 
 }

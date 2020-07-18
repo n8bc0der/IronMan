@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,7 +53,7 @@ public class Post {
 	@JoinColumn(name = "USERNAME")
 	private User user;
 
-	@OneToMany(mappedBy = "post")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "post")    // // adding fetch type eager to fix  org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role when retrieving a user
 	private Collection<Comment> postComments = new ArrayList<Comment>();
 
 	/* Default Constructor */
@@ -80,7 +81,7 @@ public class Post {
 	public String toString() {
 		return "Post [postID=" + postID + ", postSubject=" + postSubject + ", postDescription=" + postDescription
 				+ ", postTime=" + postTime + ", userstamp=" + userstamp + ", createdDate=" + createdDate
-				+ ", timestamp=" + timestamp + ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", user=" + user
+				+ ", timestamp=" + timestamp + ", lastModifiedTimestamp=" + lastModifiedTimestamp 
 				+ ", postComments=" + postComments + "]";
 	}
 

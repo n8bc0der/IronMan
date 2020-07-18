@@ -73,7 +73,7 @@ public class Comment {
 public String toString() {
 	return "Comment [commentID=" + commentID + ", commentContent=" + commentContent + ", commentTime=" + commentTime
 			+ ", userstamp=" + userstamp + ", createdDate=" + createdDate + ", timestamp=" + timestamp
-			+ ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", user=" + user + ", post=" + post + "]";
+			+ ", lastModifiedTimestamp=" + lastModifiedTimestamp +  "]";
 }
 
 	public long getCommentID() {
