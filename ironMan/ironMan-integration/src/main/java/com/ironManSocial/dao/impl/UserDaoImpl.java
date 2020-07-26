@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ironManSocial.dao.UserDao;
 import com.ironManSocial.dao.model.User;
@@ -25,7 +24,6 @@ public class UserDaoImpl implements UserDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
-	@Transactional
 	public String create(User user) {
 		
 		String userId = (String) hibernateTemplate.save(user);
@@ -33,27 +31,35 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	@Transactional
 	public void update(User user) {
 		hibernateTemplate.update(user);
 	}
 
 	@Override
-	@Transactional
 	public void delete(User user) {
 		hibernateTemplate.delete(user);
 	}
 
 	@Override
-	@Transactional
-	public User read(String username) {
+	public User readUser(String username) {
 		return hibernateTemplate.get(User.class, username);
 	}
 
 	@Override
-	@Transactional
-	public List<User> readAll() {
+	public List<User> readAllUsers() {
 		 return hibernateTemplate.loadAll(User.class);
+	}
+
+	@Override
+	public User findUser(String username) {
+		
+		User foundUser = (User) hibernateTemplate.get(User.class, username);
+		
+		if(foundUser != null) {
+			return foundUser;
+		}
+		
+		return null;
 	}
 
 }

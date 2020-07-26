@@ -9,6 +9,7 @@
 
 .normalFormBody {
   background-image: url('resources/images/ironManWallpaper.jpg');
+  background-repeat: no-repeat;
   color: white;
   font-family: Calibri, sans-serif;
   font-size: 30px;
@@ -81,18 +82,18 @@ input[type="radio"] {
 <body class="normalFormBody">
 	<h1 class="heading">Let's set you up</h1>
 	</br>
-	<form>
+	<form action="registerUser.html" method="post" >
 		<table>
 			<tr>
-				<td><input type="text" style="width:155px" placeholder="First Name" required>
-					<input type="text" style="width:155px" placeholder="Last Name" required>
+				<td><input type="text" style="width:155px" placeholder="First Name" name="firstName" required>
+					<input type="text" style="width:155px" placeholder="Last Name" name="lastName" required>
 				</td>
 			</tr>
 			<tr>
-				<td>Date of Birth<br /> <input type="date" required></td>
+				<td>Date of Birth<br /> <input type="date" name="dob" required></td>
 			</tr>
 			<tr>
-				<td><input type="text" placeholder="Email" required/></td>
+				<td><input type="text" placeholder="Email" name="userEmail" required/></td>
 			</tr>
 			<tr>
 				<td>Gender<br/> 
@@ -102,10 +103,10 @@ input[type="radio"] {
 				</td>
 			</tr>
 			<tr>
-				<td><input type="text" placeholder="Preferred Username" required /></td>
+				<td><input type="text" placeholder="Preferred Username" name="userName" required /></td>
 			</tr>
 			<tr>
-				<td><input type="password" placeholder="Password" required/></td>
+				<td><input type="password" placeholder="Password" name="userPassword" required/></td>
 			</tr>
 			<tr>
 				<td><input type="password" placeholder="Confirm Password" required/></td>

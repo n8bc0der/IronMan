@@ -12,8 +12,10 @@ public interface UserDao {
 	 
 	 void delete(User user);
 	 
-	 User read(String username);
+	 User readUser(String username);
 	 
-	 List<User> readAll();
+	 List<User> readAllUsers();
+	 
+	 User findUser(String username);
 	 
 }
