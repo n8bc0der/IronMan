@@ -5,83 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>User Registration Page</title>
-<style>
-
-.normalFormBody {
-  background-image: url('resources/images/ironManWallpaper.jpg');
-  background-repeat: no-repeat;
-  color: white;
-  font-family: Calibri, sans-serif;
-  font-size: 30px;
-  margin-left: 50px;
-  
-}
- .heading{
-	font-size: 50px;
-}
-
-input[type="text"] {
-	font-size: 18px;
-	padding: 8px 10px;
-    width: 350px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-input[type="date"] {
-	font-size: 18px;
-	padding: 8px 10px;
-    width: 350px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-    margin: 5px;
-}
-input[type="password"] {
-	font-size: 18px;
-	padding: 8px 10px;
-    width: 350px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-input[type="password"] {
-	font-size: 18px;
-	padding: 8px 10px;
-    width: 350px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-input[type="radio"] {
-	font-size: 18px;
-	padding: 8px 10px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-}
-
-.submitButton {
-	font-size: 18px;
-	padding: 8px 10px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-    font-weight: bold !important;
-    background-color: #69a74e;
-    border-color: #3b6e22;
-    width: 150px;
-    color: white;
-}
-.submitButton:hover{
-	filter: brightness(85%);
-}
-
-</style>
+<head>
+<link rel="stylesheet" type="text/css" href="resources/css/common-form.css">
+</head>
 </head>
 <body class="normalFormBody">
 	<h1 class="heading">Let's set you up</h1>
-	</br>
 	<form action="registerUser.html" method="post" >
 		<table>
 			<tr>
