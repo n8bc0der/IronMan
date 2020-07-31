@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ironManSocial.dao.UserDao;
 import com.ironManSocial.dao.model.User;
-import com.ironManSocial.dto.model.UserDTO;
 import com.ironManSocial.service.UserProfileService;
 
 @Service
@@ -16,7 +15,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	UserDao userDao;
 	
 	@Transactional
-	public String save(UserDTO user) {
+	public String save(User user) {
 		
 		System.out.println(" SERVICE IS WORKING:: SAVING USER");
 		return userDao.create(user);
@@ -24,7 +23,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 
 	@Transactional
-	public void updateUser(UserDTO user) {
+	public void updateUser(User user) {
 		userDao.update(user);
 	}
 
@@ -34,12 +33,12 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 
 	@Transactional
-	public void removeUser(UserDTO user) {
+	public void removeUser(User user) {
 		userDao.delete(user);
 	}
 
-	public UserDTO findUser(String username) {
-		return null;
+	public User findUser(String username) {
+		return userDao.findUser(username);
 	}
 
  

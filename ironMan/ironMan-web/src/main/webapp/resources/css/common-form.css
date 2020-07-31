@@ -14,18 +14,42 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   
-  color: white;
+  color: #C8C8C8;
   font-family: Calibri, sans-serif;
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 50px;
   
 }
+
+.successFormBody {
+  background-image: url('../images/ironManWallpaper_glowy.jpg');
+  background-repeat: no-repeat;
+  background-color: white;
+   /* Full height */
+  height: 100%;
+
+  /* Center and scale the image */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  color: #C8C8C8;
+  font-family: Calibri, sans-serif;
+  font-size: 20px;
+  margin-left: 50px;
+  
+}
+
+.normalFormBody a {
+  font-size: 20px;
+}
  .heading{
-	font-size: 50px;
+	font-size: 40px;
+	color: white;
 }
 
 input[type="text"] {
-	font-size: 18px;
+	font-size: 15px;
 	padding: 8px 10px;
     width: 350px;
     border-color: #bdc7d8;
@@ -34,7 +58,7 @@ input[type="text"] {
 }
 
 input[type="date"] {
-	font-size: 18px;
+	font-size: 15px;
 	padding: 8px 10px;
     width: 350px;
     border-color: #bdc7d8;
@@ -42,16 +66,7 @@ input[type="date"] {
     margin: 5px;
 }
 input[type="password"] {
-	font-size: 18px;
-	padding: 8px 10px;
-    width: 350px;
-    border-color: #bdc7d8;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-input[type="password"] {
-	font-size: 18px;
+	font-size: 15px;
 	padding: 8px 10px;
     width: 350px;
     border-color: #bdc7d8;
@@ -60,13 +75,13 @@ input[type="password"] {
 }
 
 input[type="radio"] {
-	font-size: 18px;
+	font-size: 15px;
 	padding: 8px 10px;
     border-color: #bdc7d8;
     border-radius: 5px;
 }
 .submitButton {
-	font-size: 18px;
+	font-size: 15px;
 	padding: 8px 10px;
     border-color: #bdc7d8;
     border-radius: 5px;

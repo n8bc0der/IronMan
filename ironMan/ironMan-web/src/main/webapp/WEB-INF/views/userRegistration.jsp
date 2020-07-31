@@ -5,9 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>User Registration Page</title>
-<head>
 <link rel="stylesheet" type="text/css" href="resources/css/common-form.css">
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("#userName").change( function(){
+		
+		$.ajax({
+			url: 'validateUsername.html',
+			data: {username: $("#userName").val()},
+			success: function(responseText){
+					$("#errorMsg").text(responseText);
+				
+					if(responseText!=""){
+					 	$("#userName").focus();
+					}
+			}			
+		});
+		
+	});		
+});
+
+</script>
+
 </head>
 <body class="normalFormBody">
 	<h1 class="heading">Let's set you up</h1>
@@ -32,7 +53,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input type="text" placeholder="Preferred Username" name="userName" required /></td>
+				<td><input type="text" placeholder="Preferred Username" name="userName" id="userName" required /><span style="color:red;" id="errorMsg"></span></td>
 			</tr>
 			<tr>
 				<td><input type="password" placeholder="Password" name="userPassword" required/></td>

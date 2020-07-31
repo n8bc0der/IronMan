@@ -4,20 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Registration Page</title>
+<title>Successful Registration Page</title>
 <head>
 <link rel="stylesheet" type="text/css" href="resources/css/common-form.css">
 </head>
 
-<body class="normalFormBody">
+<body class="successFormBody">
 	<h1 class="heading">Awesome. You are all set up!</h1>
-	</br>
-	<form>
 		<table>
-			<tr>
-				<td> User created with username: {username} </td>
+			<tr>	
+				<td><a href="login.html">Click here</a> to take off</td>
 			</tr>
 		</table>
-	</form>
 </body>
 </html>
